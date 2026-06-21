@@ -146,11 +146,24 @@ function demonKing() {
   while (health > 0 && demonKingHealth > 0) {
     let demonKingDamage = Math.ceil(Math.random() * 10);
     let heroDamage = Math.ceil(Math.random() * 20);
-    health -= demonKingDamage;
-    demonKingHealth -= heroDamage;
-    console.log(`You deal ${heroDamage} damage to the demon king.
-The demon king deals ${demonKingDamage} damage to you.
-Your health: ${health}
+    let choice7 = readlinesync.question(`Do you
+1. Attack the demon king
+2. Defend against the demon king's attack
+(Type 1 or 2): `);
+    if (choice7 !== "1" && choice7 !== "2") {
+      console.log("Invalid choice. Please choose 1 or 2.");
+    } else if (choice7 === "1") {
+      demonKingHealth -= heroDamage;
+      health -= demonKingDamage;
+      console.log(`You deal ${heroDamage} damage to the demon king.
+The demon king deals ${demonKingDamage} damage to you.`);
+    } else if (choice7 === "2") {
+      let reduceddemonKingDamage = Math.ceil(demonKingDamage / 2);
+      console.log(
+        `The demon king deals ${reduceddemonKingDamage} damage to you.`,
+      );
+    }
+    console.log(`Your health: ${health}
 Demon king's health: ${demonKingHealth}`);
     if (health <= 0) {
       console.log("You have been defeated by the demon king. Game over.");
@@ -161,17 +174,17 @@ Demon king's health: ${demonKingHealth}`);
     }
   }
   console.log("Would you like to play again?");
-  let choice7 = readlinesync
+  let choice8 = readlinesync
     .question(
       `Enter Y if you would like to play again
 Enter N if you would like to stop playing: `,
     )
     .toUpperCase();
-  if (choice7 !== "Y" && choice7 !== "N") {
+  if (choice8 !== "Y" && choice8 !== "N") {
     console.log("Invalid choice. Please enter Y or N.");
-  } else if (choice7 === "Y") {
+  } else if (choice8 === "Y") {
     introduction();
-  } else if (choice7 === "N") {
+  } else if (choice8 === "N") {
     console.log("Thank you for playing the game!");
   }
 }
