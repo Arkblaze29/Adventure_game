@@ -1,13 +1,17 @@
+introduction();
 let health = 100;
 let level = 1;
-console.log("Welcome to Shang Wei's Adventure Game!");
-console.log("You are an adventurer who's goal is to defeat the demon king.");
-console.log(`These are you starting stats:
-  Level: ${level}
-  Health: ${health}`);
 function levelUp() {
   level++;
   health += 20;
+}
+function introduction() {
+  console.log("Welcome to Shang Wei's Adventure Game!");
+  console.log("You are an adventurer who's goal is to defeat the demon king.");
+  console.log(`These are you starting stats:
+  Level: ${level}
+  Health: ${health}`);
+  forest();
 }
 function forest() {
   let choice1 =
@@ -21,12 +25,15 @@ function forest() {
     console.log("Invalid choice. Please choose 1 or 2.");
   } else if (choice1 === "1") {
     console.log("You enter the cave");
+    return `Level: ${level}
+    Health: ${health}`;
+    cave();
   } else if (choice1 === "2") {
     console.log("You enter the hut");
+    return `Level: ${level}
+    Health: ${health}`;
+    hut();
   }
-  globalThis.choice1 = choice1;
-  return `Level: ${level}
-  Health: ${health}`;
 }
 function cave() {
   console.log(`You enter the cave and find a goblin!
@@ -46,9 +53,9 @@ function cave() {
   } else if (choice2 === "2") {
     console.log("You run away safely.");
   }
-  globalThis.choice2 = choice2;
   return `Level: ${level}
   Health: ${health}`;
+  desert();
 }
 function hut() {
   let choice3 = prompt(`You enter the hut and find a elf.
@@ -62,9 +69,9 @@ function hut() {
   } else if (choice3 === "2") {
     health -= 10;
   }
-  globalThis.choice3 = choice3;
   return `Level: ${level}
   Health: ${health}`;
+  desert();
 }
 function desert() {
   console.log(
@@ -86,6 +93,7 @@ function desert() {
   }
   return `Level: ${level}
   Health: ${health}`;
+  mountain();
 }
 function mountain() {
   console.log(`After leaving the desert, you find yourself at the base of the mountain where the demon king's castle is built on.
@@ -105,6 +113,7 @@ function mountain() {
   }
   return `Level: ${level}
   Health: ${health}`;
+  gate();
 }
 function gate() {
   console.log(`After climbing the mountain, you finally reach the gate of the demon king's castle.
@@ -125,15 +134,16 @@ function gate() {
     );
   }
   return `Level: ${level}
-  Health: ${health}`;
+    Health: ${health}`;
+  demonKing();
 }
 function demonKing() {
   console.log(`After entering the castle, you finally confront the demon king.
     The demon king is a formidable opponent with high health and attack.`);
   let demonKingHealth = 200;
-  let demonKingDamage = Math.ceil(Math.random() * 10);
-  let heroDamage = Math.ceil(Math.random() * 20);
   while (health > 0 && demonKingHealth > 0) {
+    let demonKingDamage = Math.ceil(Math.random() * 10);
+    let heroDamage = Math.ceil(Math.random() * 20);
     health -= demonKingDamage;
     demonKingHealth -= heroDamage;
     console.log(`You deal ${heroDamage} damage to the demon king.
@@ -147,5 +157,15 @@ function demonKing() {
         "Congratulations! You have defeated the demon king and completed the adventure!",
       );
     }
+  }
+  console.log("Would you like to play again?");
+  let choice7 = prompt(`Enter Y if you would like to play again
+    Enter N if you would like to stop playing`).toUpperCase;
+  if (choice7 !== "Y" && choice7 !== "N") {
+    console.log("Invalid choice. Please enter Y or N.");
+  } else if (choice7 === "Y") {
+    introduction();
+  } else if (choice7 === "N") {
+    console.log("Thank you for playing the game!");
   }
 }
