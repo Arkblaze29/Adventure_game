@@ -157,14 +157,17 @@ function demonKing() {
       health -= demonKingDamage;
       console.log(`You deal ${heroDamage} damage to the demon king.
 The demon king deals ${demonKingDamage} damage to you.`);
+      console.log(`Your health: ${health}
+Demon king's health: ${demonKingHealth}`);
     } else if (choice7 === "2") {
       let reduceddemonKingDamage = Math.ceil(demonKingDamage / 2);
+      health -= reduceddemonKingDamage;
       console.log(
         `The demon king deals ${reduceddemonKingDamage} damage to you.`,
       );
-    }
-    console.log(`Your health: ${health}
+      console.log(`Your health: ${health}
 Demon king's health: ${demonKingHealth}`);
+    }
     if (health <= 0) {
       console.log("You have been defeated by the demon king. Game over.");
     } else if (demonKingHealth <= 0) {
