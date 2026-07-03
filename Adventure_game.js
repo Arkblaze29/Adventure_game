@@ -1,4 +1,4 @@
-const readlinesync = require("readline-sync");
+const readlineSync = require("readline-sync");
 let health;
 let level;
 function levelUp() {
@@ -17,7 +17,7 @@ Health: ${health}`);
 }
 function forest() {
   let choice1 =
-    readlinesync.question(`Your first step on your journey is into the haunted woods. You see a split in the road, one path leads to a dark cave, the other leads to a hut.
+    readlineSync.question(`Your first step on your journey is into the haunted woods. You see a split in the road, one path leads to a dark cave, the other leads to a hut.
 Do you
 1. Enter the cave
 2. Enter the hut
@@ -41,7 +41,7 @@ function cave() {
     "You enter the cave and find a goblin! The goblin attacks you! You lose 10 health.",
   );
   health -= 10;
-  let choice2 = readlinesync.question(`Do you
+  let choice2 = readlineSync.question(`Do you
 1. Fight the goblin
 2. Run away
 (Type 1 or 2): `);
@@ -58,7 +58,7 @@ Health: ${health}`);
   desert();
 }
 function hut() {
-  let choice3 = readlinesync.question(`You enter the hut and find a elf.
+  let choice3 = readlineSync.question(`You enter the hut and find a elf.
 The elf offers you
 1. A red potion
 2. A blue potion
@@ -79,7 +79,7 @@ function desert() {
     "After leaving the forest, you find yourself in a vast desert with no end in sight.",
   );
   let choice4 =
-    readlinesync.question(`As you wander through the desert, you come across a sandstorm.
+    readlineSync.question(`As you wander through the desert, you come across a sandstorm.
 Do you
 1. Take shelter in a nearby cave
 2. Keep walking through the storm
@@ -98,9 +98,9 @@ Health: ${health}`);
 }
 function mountain() {
   console.log(
-    "After leaving the desert, you find yourself at the base of the mountain where the demon king's castle is built on. You start climbling the mountain, and eventually encounter a group of bandits.",
+    "After leaving the desert, you find yourself at the base of the mountain where the demon king's castle is built on. You start climbing the mountain, and eventually encounter a group of bandits.",
   );
-  let choice5 = readlinesync.question(`Do you
+  let choice5 = readlineSync.question(`Do you
 1. Fight the bandits
 2. Try to sneak past them
 (Type 1 or 2): `);
@@ -120,7 +120,7 @@ function gate() {
   console.log(
     "After climbing the mountain, you finally reach the gate of the demon king's castle. There you find a guard blocking the entrance.",
   );
-  let choice6 = readlinesync.question(`Do you
+  let choice6 = readlineSync.question(`Do you
 1. Fight the guard
 2. Wait for the guard to fall asleep and sneak in
 (Type 1 or 2): `);
@@ -146,7 +146,7 @@ function demonKing() {
   while (health > 0 && demonKingHealth > 0) {
     let demonKingDamage = Math.ceil(Math.random() * 10);
     let heroDamage = Math.ceil(Math.random() * 20);
-    let choice7 = readlinesync.question(`Do you
+    let choice7 = readlineSync.question(`Do you
 1. Attack the demon king
 2. Defend against the demon king's attack
 (Type 1 or 2): `);
@@ -160,10 +160,10 @@ The demon king deals ${demonKingDamage} damage to you.`);
       console.log(`Your health: ${health}
 Demon king's health: ${demonKingHealth}`);
     } else if (choice7 === "2") {
-      let reduceddemonKingDamage = Math.ceil(demonKingDamage / 2);
-      health -= reduceddemonKingDamage;
+      let reducedDemonKingDamage = Math.ceil(demonKingDamage / 2);
+      health -= reducedDemonKingDamage;
       console.log(
-        `The demon king deals ${reduceddemonKingDamage} damage to you.`,
+        `The demon king deals ${reducedDemonKingDamage} damage to you.`,
       );
       console.log(`Your health: ${health}
 Demon king's health: ${demonKingHealth}`);
@@ -177,7 +177,7 @@ Demon king's health: ${demonKingHealth}`);
     }
   }
   console.log("Would you like to play again?");
-  let choice8 = readlinesync
+  let choice8 = readlineSync
     .question(
       `Enter Y if you would like to play again
 Enter N if you would like to stop playing: `,
